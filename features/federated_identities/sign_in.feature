@@ -15,6 +15,8 @@ Feature: Sign In
       When I authenticate successfully with Facebook but Facebook does not return a usable email address
       Then I should be prompted to enter an email address
       When I enter a valid email address that has not been seen before
+      Then I should be asked to go verify my email address
+      When I click on the continue button after verifying my email address
       Then I should be signed in
 
     Scenario: An existing user connects to the site again

@@ -1,0 +1,21 @@
+:facebook:
+  :app_id: 349851865045111
+  :app_secret: 8e92e3a66b8d28a72f6b88071aa144d1
+  :trusted: true
+  :has_email: true
+  :email_verified: true
+
+:google:
+  :trusted: true
+  :has_email: true
+  :email_verified: true
+
+:twitter:
+  :trusted: true
+  :has_email: false
+  :email_verified: false
+
+:github:
+  :trusted: true
+  :has_email: true
+  :email_verified: false

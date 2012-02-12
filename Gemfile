@@ -42,5 +42,6 @@ gem "mongoid", ">= 2.4.3"
 gem "devise", ">= 2.0.0"
 gem "omniauth"
 gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 gem "bootstrap-sass"
 gem "rails-footnotes", ">= 3.7", :group => :development

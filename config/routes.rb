@@ -6,6 +6,7 @@ Openuser::Application.routes.draw do
   devise_for :users
   resources :users, :only => :show
 
+  match '/auth/:provider/callback', to: 'sessions#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

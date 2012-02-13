@@ -8,6 +8,14 @@ Openuser::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
+  resources :identities do
+    resources :email do
+      get 'confirm/:verification_token', :action => :confirm
+      post 'verify/:verification_token', :action => :verify
+      get 'verified'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

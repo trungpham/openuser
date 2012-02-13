@@ -26,7 +26,7 @@ class Identity
                           )
 
       unless auth_hash['info']['email'].blank?
-        identity.build_email(:email => auth_hash['info']['email'])
+        identity.build_email(:address => auth_hash['info']['email'])
 
         if config = IdentityConfig.get(auth_hash['provider'])
 
@@ -34,7 +34,6 @@ class Identity
             identity.email.is_verified = true
           else
             identity.email.is_verified = false
-            identity.email.verification_token = BSON::ObjectId.new #this should generate a unique id
           end
 
         else
@@ -46,4 +45,17 @@ class Identity
     end
     identity
   end
+
+  def email_verified?
+    has_email? && email.is_verified?
+  end
+
+  def has_email?
+    !email_address.blank?
+  end
+
+  def email_address
+    email && email.address
+  end
+
 end

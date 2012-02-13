@@ -20,9 +20,19 @@ describe Identity do
       identity.should be_an_instance_of(Identity)
     end.to change {Identity.count}.by(1)
 
-
   end
 
+  it 'should say email is verified' do
+    IdentityConfig.stub(:get).and_return( {
+      :email_verified => true
+    })
+    identity = Identity.get_identity_from_omniauth(auth_data)
+
+    identity.has_email?.should be_true
+    identity.email_address.should == 'user@example.com'
+    identity.email_verified?.should be_true
+
+  end
   it 'should fetch the identity instead of creating a new one' do
 
     identity1 = Identity.get_identity_from_omniauth(auth_data)
@@ -42,7 +52,7 @@ describe Identity do
     })
     identity = Identity.get_identity_from_omniauth(auth_data)
     identity.email.is_verified.should be_true
-    identity.email.email.should == 'user@example.com'
+    identity.email.address.should == 'user@example.com'
   end
 
   it 'should attach the email address and generate a verification_token' do
